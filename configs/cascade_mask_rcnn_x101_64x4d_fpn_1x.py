@@ -2,7 +2,7 @@
 model = dict(
     type='CascadeRCNN',
     num_stages=3,
-    pretrained='/nfs/project/guyang/mmdetection/models/resnext101_64x4d-ee2c6f71.pth',
+    pretrained='/nfs/project/libo_i/mmdetection/models/resnext101_64x4d-ee2c6f71.pth',
     backbone=dict(
         type='ResNeXt',
         depth=101,

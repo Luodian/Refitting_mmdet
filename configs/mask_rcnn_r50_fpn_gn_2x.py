@@ -109,7 +109,7 @@ test_cfg = dict(
 		mask_thr_binary = 0.5))
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+data_root = 'nfs/project/libo_i/mmdetection/data/coco/'
 img_norm_cfg = dict(
 	mean = [102.9801, 115.9465, 122.7717], std = [1.0, 1.0, 1.0], to_rgb = False)
 data = dict(

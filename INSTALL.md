@@ -59,4 +59,4 @@ mmdetection
 
 ### Scripts
 Just for reference, [Here](https://gist.github.com/hellock/bf23cd7348c727d69d48682cb6909047) is
-a script for setting up mmdetection with conda.
+a script for setting up mmdetection with conda.sudo 

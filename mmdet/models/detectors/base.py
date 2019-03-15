@@ -131,4 +131,5 @@ class BaseDetector(nn.Module):
                 bboxes,
                 labels,
                 class_names=class_names,
-                score_thr=score_thr)
+                score_thr=score_thr,
+                show = False)

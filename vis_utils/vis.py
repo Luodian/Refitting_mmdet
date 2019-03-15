@@ -21,16 +21,15 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import os
-import sys
 
 import cv2
+# Use a non-interactive backend
+import matplotlib
 import numpy as np
 import pycocotools.mask as mask_util
 
+from mmdet.core import get_classes
 from vis_utils.colormap import colormap
-
-# Use a non-interactive backend
-import matplotlib
 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -115,6 +114,7 @@ def vis_one_image(
 	
 	mask_color_id = 0
 	for i in sorted_inds:
+		
 		bbox = boxes[i, :4]
 		score = boxes[i, -1]
 		if score < thresh:

@@ -109,16 +109,16 @@ test_cfg = dict(
 		mask_thr_binary=0.5))
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = '/nfs/project/libo_i/mmdetection/data/cityscapes/'
+data_root = '/nfs/project/libo_i/mmdetection/data/coco/'
 img_norm_cfg = dict(
 	mean=[102.9801, 115.9465, 122.7717], std=[1.0, 1.0, 1.0], to_rgb=False)
 data = dict(
-	imgs_per_gpu=4,
-	workers_per_gpu=4,
+	imgs_per_gpu=2,
+	workers_per_gpu=0,
 	train=dict(
 		type=dataset_type,
-		ann_file=data_root + 'annotations/instancesonly_filtered_gtFine_train.json',
-		img_prefix=data_root + 'leftImg8bit/train/',
+		ann_file=data_root + 'annotations/instances_train2017.json',
+		img_prefix=data_root + 'train2017/',
 		img_scale=(1333, 800),
 		img_norm_cfg=img_norm_cfg,
 		size_divisor=32,
@@ -128,8 +128,8 @@ data = dict(
 		with_label=True),
 	val=dict(
 		type=dataset_type,
-		ann_file=data_root + 'annotations/instancesonly_filtered_gtFine_val.json',
-		img_prefix=data_root + 'leftImg8bit/val/',
+		ann_file=data_root + 'annotations/instances_val2017.json',
+		img_prefix=data_root + 'val2017/',
 		img_scale=(1333, 800),
 		img_norm_cfg=img_norm_cfg,
 		size_divisor=32,
@@ -139,8 +139,8 @@ data = dict(
 		with_label=True),
 	test=dict(
 		type=dataset_type,
-		ann_file=data_root + 'annotations/instancesonly_filtered_gtFine_test.json',
-		img_prefix=data_root + 'leftImg8bit/test/',
+		ann_file=data_root + 'annotations/instances_val2017.json',
+		img_prefix=data_root + 'val2017/',
 		img_scale=(1333, 800),
 		img_norm_cfg=img_norm_cfg,
 		size_divisor=32,
@@ -149,7 +149,7 @@ data = dict(
 		with_label=False,
 		test_mode=True))
 # optimizer
-optimizer = dict(type='SGD', lr=0.0025, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # learning policy
 lr_config = dict(
@@ -164,14 +164,14 @@ log_config = dict(
 	interval=50,
 	hooks=[
 		dict(type='TextLoggerHook'),
-		dict(type='TensorboardLoggerHook',)
+		# dict(type='TensorboardLoggerHook')
 	])
 # yapf:enable
 # runtime settings
 total_epochs = 24
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/cityscapes_mask_rcnn_r50_fpn_gn_2x'
+work_dir = './work_dirs/mask_rcnn_r50_fpn_gn_2x'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]

@@ -1,11 +1,11 @@
 import argparse
+import sys
 
 import mmcv
 import torch
 from mmcv.parallel import MMDataParallel, collate, scatter
 from mmcv.runner import load_checkpoint, obj_from_dict, parallel_test
 
-import sys
 sys.path.append("/nfs/project/libo_i/mmdetection")
 from mmdet import datasets
 from mmdet.core import coco_eval, results2json

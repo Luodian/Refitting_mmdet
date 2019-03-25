@@ -19,15 +19,17 @@ def validate_img():
 		print("{} images in {}".format(cnt, item))
 
 
+coco = "/nfs/project/libo_i/mmdetection/data/coco/annotations/instances_val2017.json"
+cityscapes = "/nfs/project/libo_i/mmdetection/data/cityscapes/annotations/instancesonly_filtered_gtFine_train.json"
+kitti = "/nfs/project/libo_i/mmdetection/data/kitti/annotations/training.json"
+
+
 def validate_ann():
-	base_path = "/nfs/project/libo_i/mmdetection/data/cityscapes/annotations/instancesonly_filtered_gtFine_{}.json"
-	for item in tasks:
-		precise_path = base_path.format(item)
-		with open(precise_path, 'r') as fp:
-			ann = json.load(fp)
-			print("Counting {}".format(item))
-			print(len(ann['annotations']))
-			print(len(ann['images']))
+	base_path = kitti
+	with open(base_path, 'r') as fp:
+		ann = json.load(fp)
+	print(len(ann['annotations']))
+	print(len(ann['images']))
 
 
 validate_ann()

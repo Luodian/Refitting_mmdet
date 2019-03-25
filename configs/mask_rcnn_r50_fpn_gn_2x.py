@@ -145,8 +145,8 @@ data = dict(
 		img_norm_cfg=img_norm_cfg,
 		size_divisor=32,
 		flip_ratio=0,
-		with_mask=False,
-		with_label=False,
+		with_mask=True,
+		with_label=True,
 		test_mode=True))
 # optimizer
 optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
@@ -164,7 +164,7 @@ log_config = dict(
 	interval=50,
 	hooks=[
 		dict(type='TextLoggerHook'),
-		# dict(type='TensorboardLoggerHook')
+		dict(type='TensorboardLoggerHook')
 	])
 # yapf:enable
 # runtime settings

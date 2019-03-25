@@ -3,9 +3,9 @@ from __future__ import division
 import argparse
 import sys
 
-from mmcv import Config
-
 sys.path.append("/nfs/project/libo_i/mmdetection")
+
+from mmcv.utils.config import Config
 from mmdet import __version__
 from mmdet.datasets import get_dataset
 from mmdet.apis import (train_detector, init_dist, get_root_logger,
@@ -30,6 +30,8 @@ def parse_args():
 		default=1,
 		help='number of gpus to use '
 		     '(only applicable to non-distributed training)')
+	parser.add_argument("--finetune", help="whether to omit the mask&bbox head loaded from other models",
+	                    action="store_true")
 	parser.add_argument('--seed', type=int, default=None, help='random seed')
 	parser.add_argument(
 		'--launcher',
